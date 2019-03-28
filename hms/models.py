@@ -14,3 +14,13 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Reciept(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    description = models.TextField('Description', blank=True)
+    reciept = models.ImageField(upload_to='reciepts', blank=True)
+
+    def __str__(self):
+        return self.patient.name
